@@ -12,6 +12,13 @@ function App() {
   return (
     <Container>
       <Row>
+        <Col sm={4}>
+          <ListGroup>
+            <ListGroup.Item><a href='/'>Home</a></ListGroup.Item>
+            <ListGroup.Item><a href='/list'>List</a></ListGroup.Item>
+            <ListGroup.Item><a href='/feature'>Feature</a></ListGroup.Item>
+          </ListGroup>
+        </Col>
         <Col sm={8}>
           {(window.location.href === 'http://localhost:3000/') &&
             <>
@@ -234,14 +241,6 @@ function App() {
               </Card>
             </>
           }
-        </Col>
-
-        <Col sm={4}>
-          <ListGroup>
-            <ListGroup.Item><a href='/'>Home</a></ListGroup.Item>
-            <ListGroup.Item><a href='/list'>List</a></ListGroup.Item>
-            <ListGroup.Item><a href='/feature'>Feature</a></ListGroup.Item>
-          </ListGroup>
         </Col>
       </Row>
     </Container>
