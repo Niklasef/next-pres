@@ -1,11 +1,12 @@
 import Carousel from 'react-bootstrap/Carousel'
 
-function Feature(props) {
+
+function List({items}) {
   return (
     <Carousel interval={null}>
-      {props.items
+      {items
         .map(i =>
-          <Carousel.Item>
+          <Carousel.Item key={`${i.title}-${i.id}`}>
             <img
               className="d-block w-100"
               src={`https://via.placeholder.com/800x400/${i.color}.png`}
@@ -20,4 +21,10 @@ function Feature(props) {
   );
 }
 
-export default Feature;
+export async function getServerSideProps() {
+  const res = await fetch('http://localhost:5000/api/feature-items');
+  const items = await res.json();
+  return { props: { items } };
+}
+
+export default List;

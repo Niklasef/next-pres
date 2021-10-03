@@ -2,12 +2,11 @@ import Container from 'react-bootstrap/Container'
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
 import Card from 'react-bootstrap/Card'
-import Button from 'react-bootstrap/Button'
 
-function List(props) {
+function List({items}) {
   return (
     <Container>
-    {props.items
+    {items
       .reduce(function(result, value, index, array) {
         if (index % 2 === 0)
           result.push(array.slice(index, index + 2));
@@ -20,7 +19,7 @@ function List(props) {
               <Card.Img variant="top" src={`https://via.placeholder.com/500/${i[0].color}.png`} />
               <Card.Body>
                 <Card.Title>{i[0].title}</Card.Title>
-                <Button variant="primary" onClick={_ => props.setDetailsView(i[0].id)}>Details</Button>
+                <a href={`/item/${i[0].id}`} className="btn btn-primary active" role="button">Details</a>
               </Card.Body>
             </Card>
           </Col>
@@ -29,7 +28,7 @@ function List(props) {
               <Card.Img variant="top" src={`https://via.placeholder.com/500/${i[1].color}.png`} />
               <Card.Body>
                 <Card.Title>{i[1].title}</Card.Title>
-                <Button variant="primary" onClick={_ => props.setDetailsView(i[1].id)}>Details</Button>
+                <a href={`/item/${i[1].id}`} className="btn btn-primary active" role="button">Details</a>
               </Card.Body>
             </Card>
           </Col>
@@ -37,6 +36,12 @@ function List(props) {
     )}
   </Container>
   );
+}
+
+export async function getServerSideProps() {
+  const res = await fetch('http://localhost:5000/api/items');
+  const items = await res.json();
+  return { props: { items } };
 }
 
 export default List;
