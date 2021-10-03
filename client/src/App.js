@@ -28,7 +28,7 @@ function App() {
 
   const [activeMenuItem, setActiveMenuItem] = useState(undefined);
   const [currentView, setCurrentView] = useState(['featured-item', undefined, setFeaturedItem]);
-  useEffect(
+  useEffect(//TODO: remove useEffect
     () => {
       setActiveMenuItem(currentView[0]);
       call(
