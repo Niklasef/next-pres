@@ -37,7 +37,7 @@ function App({ Component, pageProps }) {
             </Link>
             <Link href='/list'>
               <a>
-              <ListGroup.Item active={router.pathname === '/list'}>
+                <ListGroup.Item active={router.pathname === '/list'}>
                   List
                 </ListGroup.Item>
               </a>
