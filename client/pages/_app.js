@@ -6,8 +6,10 @@ import Container from 'react-bootstrap/Container'
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
 import ListGroup from 'react-bootstrap/ListGroup'
+import { useRouter } from 'next/router'
 
 function App({ Component, pageProps }) {
+  const router = useRouter();
   return (
     <>
     <Head>
@@ -28,17 +30,23 @@ function App({ Component, pageProps }) {
           <ListGroup>
             <Link href='/'>
               <a>
-                <ListGroup.Item>Home</ListGroup.Item>
+                <ListGroup.Item active={router.pathname === '/'}>
+                  Home
+                </ListGroup.Item>
               </a>
             </Link>
             <Link href='/list'>
               <a>
-                <ListGroup.Item>List</ListGroup.Item>
+              <ListGroup.Item active={router.pathname === '/list'}>
+                  List
+                </ListGroup.Item>
               </a>
             </Link>
             <Link href='/feature'>
               <a>
-                <ListGroup.Item>Feature</ListGroup.Item>
+                <ListGroup.Item active={router.pathname === '/feature'}>
+                  Feature
+                </ListGroup.Item>
               </a>
             </Link>
           </ListGroup>
