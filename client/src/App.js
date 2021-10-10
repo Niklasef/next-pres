@@ -26,11 +26,9 @@ function App() {
   const [featuredItem, setFeaturedItem] = useState(undefined);
   const [featureItems, setFeatureItems] = useState(undefined);
 
-  const [activeMenuItem, setActiveMenuItem] = useState(undefined);
   const [currentView, setCurrentView] = useState(['featured-item', undefined, setFeaturedItem]);
-  useEffect(//TODO: remove useEffect
+  useEffect(
     () => {
-      setActiveMenuItem(currentView[0]);
       call(
         `${currentView[0]}${currentView[1] 
           ? '/'+currentView[1] 
@@ -51,17 +49,17 @@ function App() {
           <ListGroup>
             <ListGroup.Item
               onClick={_ => setCurrentView(['featured-item', undefined, setFeaturedItem])}
-              active={activeMenuItem === 'featured-item'}>
+              active={currentView[0] === 'featured-item'}>
                 Home
             </ListGroup.Item>
             <ListGroup.Item
               onClick={_ => setCurrentView(['items', undefined, setItems])}
-              active={activeMenuItem === 'items'}>
+              active={currentView[0] === 'items'}>
                 List
             </ListGroup.Item>
             <ListGroup.Item
               onClick={_ => setCurrentView(['feature-items', undefined, setFeatureItems])}
-              active={activeMenuItem === 'feature-items'}>
+              active={currentView[0] === 'feature-items'}>
                 Feature
             </ListGroup.Item>
           </ListGroup>
