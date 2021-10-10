@@ -70,6 +70,7 @@ function sleep(ms) {
 }
 
 app.get('/api/items', async (_, res) => {
+  console.log(`calling '/api/items'`);
   await sleep(processingTime);
   res.send(
     items
@@ -77,11 +78,13 @@ app.get('/api/items', async (_, res) => {
 });
 
 app.get('/api/item/:id', async (req, res) => {
+  console.log(`calling '/api/item/${req.params['id']}'`);
   await sleep(processingTime);  
   res.send(items.find(i => i.id === parseInt(req.params['id'])));
 });
 
 app.get('/api/feature-items', async (_, res) => {
+  console.log(`calling '/api/feature-items'`);
   await sleep(processingTime);
   res.send(
     [{
@@ -104,6 +107,7 @@ app.get('/api/feature-items', async (_, res) => {
 });
 
 app.get('/api/featured-item', async (_, res) => {
+  console.log(`calling '/api/featured-item'`);
   await sleep(processingTime);  
   res.send(
     {
