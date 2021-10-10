@@ -2,6 +2,7 @@ import Container from 'react-bootstrap/Container'
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
 import Card from 'react-bootstrap/Card'
+import Link from 'next/link'
 
 function List({items}) {
   return (
@@ -19,7 +20,9 @@ function List({items}) {
               <Card.Img variant="top" src={`https://via.placeholder.com/500/${i[0].color}.png`} />
               <Card.Body>
                 <Card.Title>{i[0].title}</Card.Title>
-                <a href={`/item/${i[0].id}`} className="btn btn-primary active" role="button">Details</a>
+                <Link href={`/item/${i[0].id}`}>
+                  <a className="btn btn-primary active" role="button">Details</a>
+                  </Link>
               </Card.Body>
             </Card>
           </Col>
@@ -28,7 +31,9 @@ function List({items}) {
               <Card.Img variant="top" src={`https://via.placeholder.com/500/${i[1].color}.png`} />
               <Card.Body>
                 <Card.Title>{i[1].title}</Card.Title>
-                <a href={`/item/${i[1].id}`} className="btn btn-primary active" role="button">Details</a>
+                <Link href={`/item/${i[1].id}`}>
+                  <a className="btn btn-primary active" role="button">Details</a>
+                </Link>
               </Card.Body>
             </Card>
           </Col>
