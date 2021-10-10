@@ -3,6 +3,7 @@ const bodyParser = require('body-parser');
 
 const app = express();
 const port = process.env.PORT || 5000;
+const processingTime = 200;
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -62,17 +63,26 @@ const items = [
 ];
 
 
-app.get('/api/items', (_, res) => {
+function sleep(ms) {
+  return new Promise((resolve) => {
+    setTimeout(resolve, ms);
+  });
+}
+
+app.get('/api/items', async (_, res) => {
+  await sleep(processingTime);
   res.send(
     items
   );
 });
 
-app.get('/api/item/:id', (req, res) => {
+app.get('/api/item/:id', async (req, res) => {
+  await sleep(processingTime);  
   res.send(items.find(i => i.id === parseInt(req.params['id'])));
 });
 
-app.get('/api/feature-items', (_, res) => {
+app.get('/api/feature-items', async (_, res) => {
+  await sleep(processingTime);
   res.send(
     [{
       id: 4,
@@ -93,7 +103,8 @@ app.get('/api/feature-items', (_, res) => {
   );
 });
 
-app.get('/api/featured-item', (_, res) => {
+app.get('/api/featured-item', async (_, res) => {
+  await sleep(processingTime);  
   res.send(
     {
       id: 5,
