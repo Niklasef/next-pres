@@ -22,7 +22,7 @@ function List({items}) {
                 <Card.Title>{i[0].title}</Card.Title>
                 <Link href={`/item/${i[0].id}`}>
                   <a className="btn btn-primary active" role="button">Details</a>
-                  </Link>
+                </Link>
               </Card.Body>
             </Card>
           </Col>
