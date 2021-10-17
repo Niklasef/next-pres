@@ -21,11 +21,16 @@ function App() {
     return body;
   };
 
+  const [featuredItem, setFeaturedItem] = useState(undefined);
   const [items, setItems] = useState(undefined);
   const [item, setItem] = useState(undefined);
-  const [featuredItem, setFeaturedItem] = useState(undefined);
-  const [featureItems, setFeatureItems] = useState(undefined);
 
+  const [featureItems, setFeatureItems] = useState(undefined);
+  const [featureItemIds, setFeatureItemIds] = useState(
+    localStorage.getItem('feature-item-ids') 
+      ? JSON.parse(localStorage.getItem('feature-item-ids'))
+      : []);  
+        
   const [currentView, setCurrentView] = useState(['featured-item', undefined, setFeaturedItem]);
   useEffect(
     () => {
@@ -36,7 +41,7 @@ function App() {
         .then(data =>
           currentView[2](data));
       },
-    [currentView]);  
+    [currentView]);
 
   return (
     <Container>
@@ -58,7 +63,7 @@ function App() {
                 List
             </ListGroup.Item>
             <ListGroup.Item
-              onClick={_ => setCurrentView(['feature-items', undefined, setFeatureItems])}
+              onClick={_ => setCurrentView(['feature-items', JSON.stringify(featureItemIds), setFeatureItems])}
               active={currentView[0] === 'feature-items'}>
                 Feature
             </ListGroup.Item>
@@ -81,6 +86,10 @@ function App() {
           {(currentView[0] === 'feature-items') && featureItems &&
             <Feature
               items={featureItems}
+              setItems={setFeatureItems}
+              itemIds={featureItemIds}
+              setItemIds={setFeatureItemIds}
+              call={call}
             ></Feature>
           }
 

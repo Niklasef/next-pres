@@ -14,7 +14,7 @@ function List(props) {
         return result;
       }, [])
       .map(i =>
-        <Row key={`${i[0].id}-${i[1].id}`}>
+        <Row key={`${i[0].title}-${i[1].title}`}>
           <Col sm>
             <Card>
               <Card.Img variant="top" src={`https://via.placeholder.com/500/${i[0].color}.png`} />
