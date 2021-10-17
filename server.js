@@ -83,27 +83,11 @@ app.get('/api/item/:id', async (req, res) => {
   res.send(items.find(i => i.id === parseInt(req.params['id'])));
 });
 
-app.get('/api/feature-items', async (_, res) => {
+app.get('/api/feature-items/:ids', async (req, res) => {
   console.log(`calling '/api/feature-items'`);
   await sleep(processingTime);
-  res.send(
-    [{
-      id: 4,
-      title: 'Ut enim',
-      description: 'Ut enim ad minim veniam',
-      color: '440'
-    }, {
-      id: 5,
-      title: 'Quis nostrud',
-      description: 'Quis nostrud exercitation ullamco laboris',
-      color: '404'
-    }, {
-      id: 6,
-      title: 'Nisi ut aliquip',
-      description: 'Nisi ut aliquip ex ea commodo consequat',
-      color: '044'
-    }]
-  );
+  const ids = JSON.parse(req.params['ids']);
+  res.send(items.filter(i => ids.find(id => i.id === id)));
 });
 
 app.get('/api/featured-item', async (_, res) => {
