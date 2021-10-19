@@ -28,27 +28,21 @@ function App({ Component, pageProps }) {
 
           {/* MENU */}
           <ListGroup>
-            <Link href='/'>
-              <a>
-                <ListGroup.Item active={router.pathname === '/'}>
-                  Home
-                </ListGroup.Item>
-              </a>
-            </Link>
-            <Link href='/list'>
-              <a>
-                <ListGroup.Item active={router.pathname === '/list'}>
-                  List
-                </ListGroup.Item>
-              </a>
-            </Link>
-            <Link href='/feature'>
-              <a>
-                <ListGroup.Item active={router.pathname === '/feature'}>
-                  Feature
-                </ListGroup.Item>
-              </a>
-            </Link>
+            <a href={`/`}>
+              <ListGroup.Item active={router.pathname === '/'}>
+                Home
+              </ListGroup.Item>
+            </a>
+            <a href={`/list`}>
+              <ListGroup.Item active={router.pathname === '/list'}>
+                List
+              </ListGroup.Item>
+            </a>
+            <a href={`/feature`}>
+              <ListGroup.Item active={router.pathname === '/feature'}>
+                Feature
+              </ListGroup.Item>
+            </a>
           </ListGroup>
 
         </Col>
